@@ -18,5 +18,13 @@
     <ClCompile Include="ALG_Beads.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BeadsSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BeadsSolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
