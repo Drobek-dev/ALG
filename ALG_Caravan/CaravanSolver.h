@@ -9,12 +9,12 @@
 
 using namespace std;
 
-class AlgHw4Solver{
+class CaravanSolver{
 public:
 	
 	void SolveCaravanProblem();
-	void ReadInputSTDIN();
-	void ReadInputFILE(string filename);
+	
+	bool ReadInputFILE(string filename);
 	void PrintInput();
 	vector<uint32_t> RetResult();
 

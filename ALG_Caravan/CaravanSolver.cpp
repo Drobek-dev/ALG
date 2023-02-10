@@ -1,6 +1,6 @@
 #include "CaravanSolver.h"
 
-void AlgHw4Solver::SolveCaravanProblem() {
+void CaravanSolver::SolveCaravanProblem() {
 
 	mNodesToBeSearched.push_back(1); // always starting in node 1 according to assignment
 	mNodesSatietyLevel[1] = mSatiety;
@@ -73,31 +73,18 @@ void AlgHw4Solver::SolveCaravanProblem() {
 	//mMinNumOfNecessarySupplies = best;
 }
 
-vector<uint32_t> AlgHw4Solver::RetResult() {
+vector<uint32_t> CaravanSolver::RetResult() {
 	vector<uint32_t> result{ mMinNumOfNecessarySupplies, mAccesibleVillagesWithZeroSupplies };
 	resetToInitState();
 	return result;
 }
 
-void AlgHw4Solver::ReadInputSTDIN() {
-	cin >> mNumOfVillages;
-	cin >> mNumOfRoutes >> mBefriendedVillagesLimit >> mSatiety;
-
-	initVectors();
-
-	int village1, village2;
-	while (cin >> village1 >> village2) {
-		mNodesNeighbours[village1].push_back(village2);
-		mNodesNeighbours[village2].push_back(village1);
-	}
-}
-
-void AlgHw4Solver::ReadInputFILE(string filename) {
+bool CaravanSolver::ReadInputFILE(string filename) {
 	ifstream inputFile;
 	inputFile.open(filename);
 	if (!inputFile) {
 		cerr << "File could not be opened" << endl;
-		exit(1);
+		return true;
 	}
 
 	inputFile >> mNumOfVillages >> mNumOfRoutes >> mBefriendedVillagesLimit >> mSatiety;
@@ -110,16 +97,17 @@ void AlgHw4Solver::ReadInputFILE(string filename) {
 	}
 
 	inputFile.close();
+	return false;
 }
 
-void AlgHw4Solver::PrintInput() {
+void CaravanSolver::PrintInput() {
 	cout << "Number of nodes: " << setw(8) << mNumOfVillages;
 	cout << "; Number of edges: " << setw(8) << mNumOfRoutes;
 
 
 }
 
-void AlgHw4Solver::initVectors() {
+void CaravanSolver::initVectors() {
 	mNodesNeighbours.assign(mNumOfVillages + mShiftValue, vector<uint32_t>());
 	mNodesNumOfUsedFoodSupplies.assign(mNumOfVillages + mShiftValue, UINT32_MAX);
 	mNodesSatietyLevel.assign(mNumOfVillages + mShiftValue, 0); // input mSatiety >= 1

@@ -2,19 +2,52 @@
 //
 
 #include <iostream>
+#include <chrono>
+#include "RetroGameSolver.h"
+using namespace std;
+using namespace std::chrono;
+
+class IOFiles {
+public:
+	vector<string> inputs{ "pub01.in","pub02.in","pub03.in","pub04.in","pub05.in","pub06.in","pub07.in","pub08.in","pub09.in","pub10.in"};
+	vector<string> outputs{ "pub01.out","pub02.out","pub03.out","pub04.out","pub05.out","pub06.out","pub07.out","pub08.out","pub09.out","pub10.out" };
+
+};
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	IOFiles iof;
+	RetroGameSolver retroGameSolver;
+
+	for (size_t i = 0; i < iof.inputs.size(); i++) {
+
+		if (retroGameSolver.ReadInputFromFile(iof.inputs[i]))
+			continue;
+
+		auto start = high_resolution_clock::now();
+		uint32_t result = retroGameSolver.SolveInput();
+		auto duration = duration_cast<milliseconds>(high_resolution_clock::now() - start);
+		retroGameSolver.PrintInput();
+		cout << " Result: " << setw(8) << result << " Required time: " << setw(8) << duration.count() << " ms";
+
+		ifstream results;
+		results.open(iof.outputs[i]);
+
+		if (results) {
+			uint32_t r1;
+			results >> r1;
+			
+			string isResCorrect = r1 == result ? "TRUE" : "FALSE";
+			cout << "; Reference result: " << setw(8) << r1 << " " << " => correct: " << isResCorrect << endl;
+			results.close();
+		}
+		else {
+			cerr << "Warning: File: " << iof.outputs[i] << " not found." << endl;
+			cout << endl;
+		}
+		retroGameSolver.Reset();
+
+	}
+	return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file

@@ -83,8 +83,6 @@ private:
 	int EvaluateEdge(int edgeCost);
 
 public:
-
-	void ReadInputFromSTDIN();
 	bool ReadInputFromFile(string filename);
 	int RetNumOfNodes() {
 		return minValueofNumOfBeads;

@@ -24,20 +24,6 @@ bool BeadsSolver::ReadInputFromFile(string filename) {
 	}
 }
 
-void BeadsSolver::ReadInputFromSTDIN() {
-
-	cin >> numberOfBeads;
-	cin >> numberOfRedBeads;
-	neighbours.assign(numberOfBeads + indexShift, vector<int>());
-	int inputNumberA, inputNumberB;
-
-	while (cin >> inputNumberA >> inputNumberB) {
-		neighbours.at(inputNumberA).push_back(inputNumberB);
-		neighbours.at(inputNumberB).push_back(inputNumberA);
-	}
-
-}
-
 void BeadsSolver::BuildAndSearchTree() {
 	if (numberOfRedBeads == DEFAULT) {
 		cerr << "Warning: No input read!" << endl;

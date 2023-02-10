@@ -17,10 +17,13 @@ int main()
 {
 
 	IOFiles iof;
-	AlgHw4Solver caravanProblemSolver;
+	CaravanSolver caravanProblemSolver;
 
 	for (size_t i = 0; i < iof.inputs.size(); i++) {
-		caravanProblemSolver.ReadInputFILE(iof.inputs[i]);
+
+		if(caravanProblemSolver.ReadInputFILE(iof.inputs[i])) {
+			continue;
+		}
 
 		auto start = high_resolution_clock::now();
 		caravanProblemSolver.SolveCaravanProblem();

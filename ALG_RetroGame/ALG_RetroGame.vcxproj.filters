@@ -18,5 +18,13 @@
     <ClCompile Include="ALG_RetroGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RetroGameSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RetroGameSolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
