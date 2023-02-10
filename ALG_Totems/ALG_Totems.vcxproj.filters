@@ -18,5 +18,13 @@
     <ClCompile Include="ALG_Totems.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TotemsSolver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TotemsSolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

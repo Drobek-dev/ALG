@@ -3,21 +3,54 @@
 
 #include <iostream>
 #include <chrono>
+#include "TotemsSolver.h"
 
 
 using namespace std::chrono;
 
+class IOFiles {
+public:
+	vector<string> inputs{ "pub01.in","pub02.in","pub03.in","pub04.in","pub05.in","pub06.in","pub07.in","pub08.in","pub09.in","pub10.in" };
+	vector<string> outputs{ "pub01.out","pub02.out","pub03.out","pub04.out","pub05.out","pub06.out","pub07.out","pub08.out","pub09.out","pub10.out" };
+
+};
+
 int main()
 {
-    auto start = high_resolution_clock::now();
+	IOFiles iof;
+	TotemsSolver totemsSolver;
 
-    std::cout << "Hello Totems!\n";
-    
-    auto stop = high_resolution_clock::now();
+	for (size_t i = 0; i < iof.inputs.size(); i++) {
 
-    auto duration = duration_cast<milliseconds>(stop - start);
+		if (totemsSolver.ReadInputFromFile(iof.inputs[i]))
+			continue;
 
-    std::cout << " Time taken by function: "
-        << duration.count() << " ms" << std::endl;
+		auto start = high_resolution_clock::now();
+		totemsSolver.Solve();
+		auto duration = duration_cast<milliseconds>(high_resolution_clock::now() - start);
+		auto result = totemsSolver.GetResult();
+		totemsSolver.PrintInput();
+		cout <<" Result: " << setw(8) << result << " Required time: " << setw(8) << duration.count() << " ms";
+
+		ifstream results;
+		results.open(iof.outputs[i]);
+
+		if (results) {
+			uint32_t r1;
+			results >> r1;
+
+			string isResCorrect = r1 == result ? "TRUE" : "FALSE";
+			cout << "; Reference result: " << setw(8) << r1 << " " << " => correct: " << isResCorrect << endl;
+			results.close();
+		}
+		else {
+			cerr << "Warning: File: " << iof.outputs[i] << " not found." << endl;
+			cout << endl;
+		}
+		totemsSolver.Reset();
+
+	}
+	return 0;
 }
+
 

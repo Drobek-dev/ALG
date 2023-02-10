@@ -128,6 +128,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ALG_Totems.cpp" />
+    <ClCompile Include="TotemsSolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="TotemsSolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
