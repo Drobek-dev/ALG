@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0111)https://cw.felk.cvut.cz/brute/data/ae/release/2019z_b4b33alg/algzima2019/evaluation/input.php?task=occultations -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="cache-control" content="no-cache">
+  <link rel="stylesheet" type="text/css" href="./Zadání úlohy z A4B33ALG_files/default.css">
+  <title>Zadání úlohy z B4B33ALG</title>
+</head>
+<body>
+ <div class="main">
+
+
+<h2><font color="blue">Dělení korálků</font></h2>
+<p align="justify">
+
+Anna a Zita najdou na půdě několik velkých korálků pospojovaných provázky do souvislého celku. Jedná se zřejmě o hračku jejich maminky nebo babičky.
+Při bližším prozkoumání vidí, že korálky jsou dvou barev, bílé a červené. Provázky vždy spojují dvojici korálků. Lze vypozorovat,
+že z každého korálku vychází jeden, dva, nebo tři provázky.
+Jejich tatínek by řekl, že celá struktura korálků a provázků se dá popsat jako souvislý graf bez cyklů, tedy strom, přičemž stupeň každého uzlu je
+maximálně 3. Děvčatům se velmi líbí červené korálky, bílé korálky je příliš nezajímají. Přemýšlejí, jak si mají nález co nejspravedlivěji rozdělit,
+zároveň jej ale nechtějí moc poškodit. Dohodnou se, že přestřihnou pouze jeden provázek a každá z nich si vezme jednu ze dvou vzniklých částí.
+Chtějí vybrat provázek k přestřihnutí tak, aby rozdíl v počtu červených korálků obou částí byl co nejmenší.
+<br>
+<br>
+
+</p>
+
+<h3><font color="blue">Úloha</font></h3>
+<p align="justify">
+Je dána struktura korálků a provázků. Určete, který provázek mají Anna a Zita přestřihnout, aby absolutní hodnota rozdílu počtů červených korálků
+obou částí, které přestřihnutím vzniknou, byla minimální.
+
+</p>
+
+<table border="0" width="760" align="center"><tbody><tr><td align="center">
+<img style="width: 420px;" src="example.png">
+<!--img style="width: 420px;" src="getdata.php?task=beads&item=example.png"-->
+<br>
+<b>Obrázek 1.</b> Příklady soustav korálků (uzly) a provázků (hrany). 
+a) Nejlepší rozdělení na dvě části získáme přestřihnutím provázku, který spojuje korálky 3 a 5. Obě části pak obsahují dva červené korálky.
+Jiná možnost, jak docílit tohoto stavu, neexistuje.
+b) Nyní lze docílit v nejlepším případě toho, že jedna část má 2 a druhá část 5 červených korálků. Můžeme přestřihnout například provázek spojující korálky 1 a 4.
+Ke stejnému výsledku vedou i další možnosti. Minimální rozdíl v počtu červených korálků vzniklých částí je tedy 3, nemůže být menší.
+     </td></tr>
+</tbody></table>
+
+<hr>
+
+
+<h3><font color="blue">Vstup</font></h3>
+<p align="justify">
+Na prvním vstupním řádku jsou dvě celá čísla <i>N</i> a <i>R</i> oddělená mezerou. Číslo <i>N</i> je počet všech korálků, číslo
+<i>R</i> je počet červených korálků. Korálky jsou číslované od 1 do <i>N</i>, přičemž červené korálky jsou číslované od 1 do <i>R</i>.
+Následuje <i>N</i> &minus; 1 řádků. Na každém tomto řádku je dvojice čísel <i>U</i><sub>1</sub>, <i>U</i><sub>2</sub>,
+krerá reprezentuje provázek spojující korálky s čísly <i>U</i><sub>1</sub> a <i>U</i><sub>2</sub>. Provázky jsou na vstupu zapsané v náhodném pořadí.
+<br>
+<!--br-->
+Platí 2 &le; <i>N</i> &le; 9 &times; 10<sup>5</sup> a 0 &le; <i>R</i> &le; <i>N</i>.
+</p>
+
+
+ <h3><font color="blue">Výstup</font></h3>
+<p align="justify">
+Výstup obsahuje jeden řádek, na kterém jsou dvě čísla <i>U</i><sub>1</sub>, <i>U</i><sub>2</sub> oddělená mezerou.
+Tato čísla splňují <i>U</i><sub>1</sub> < <i>U</i><sub>2</sub> a reprezentují krajní korálky provázku, který se má přestřihnout k dosažení
+nejlepšího rozdělení červených korálků.
+Existuje-li jiný provázek s krajními korálky <i>V</i><sub>1</sub>, <i>V</i><sub>2</sub>, kde <i>V</i><sub>1</sub> < <i>V</i><sub>2</sub>,
+jehož přestřihnutí vytvoří také dvě části s minimálním rozdílem v počtu červených korálků, potom musí platit
+buď <i>U</i><sub>1</sub> < <i>V</i><sub>1</sub> a nebo <i>U</i><sub>1</sub> = <i>V</i><sub>1</sub> &amp;
+<i>U</i><sub>2</sub> < <i>V</i><sub>2</sub>. Znamená to tedy, že v případě více nejlepších možností se na výstupu očekává ta, která je
+nejmenší v lexikografickém uspořádání podle čísel krajních korálků.
+</p>
+
+
+<h3><font color="blue">Příklad 1</font></h3>
+
+<b>Vstup</b><br>
+<pre>
+7 4
+1 5
+5 2
+4 7
+3 6
+7 3
+5 3
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+3 5
+</pre>
+
+Data a řešení Příkladu 1 jsou znázorněna na Obrázku 1a).
+
+<h3><font color="blue">Příklad 2</font></h3>
+<b>Vstup</b><br>
+<pre>
+10 7
+4 1
+7 2
+6 9
+10 5
+5 1
+4 9
+8 3
+8 6
+4 2
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+1 4
+</pre>
+
+Data a řešení Příkladu 2 jsou znázorněna na Obrázku 1b).
+
+<hr>
+<h3><font color="blue">Veřejná data</font></h3>
+<p align="justify">
+Veřejná data k&nbsp;úloze jsou k&nbsp;dispozici. Veřejná data jsou uložena také v&nbsp;odevzdávacím systému a při
+každém odevzdání/spuštění úlohy dostává řešitel kompletní výstup na stdout a stderr ze svého programu
+pro každý soubor veřejných dat.
+<br>
+<a href="getdata.php?task=beads&amp;item=datapub.zip"><b>Veřejná data</b></a>
+</p>
+
+</div></body></html>

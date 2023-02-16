@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0111)https://cw.felk.cvut.cz/brute/data/ae/release/2019z_b4b33alg/algzima2019/evaluation/input.php?task=occultations -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="cache-control" content="no-cache">
+  <link rel="stylesheet" type="text/css" href="./Zadání úlohy z A4B33ALG_files/default.css">
+  <title>Zadání úlohy z B4B33ALG</title>
+</head>
+<body>
+ <div class="main">
+
+
+<h2><font color="blue">Výkup totemů v africkém pralese</font></h2>
+<p align="justify">
+
+Cestovatel Kamil Holub navštíví domorodý kmen v africkém pralese. Příslušníci kmene žijí v chatrčích podél dlouhé řeky.
+Několik chatrčí tvoří vesnici, přičemž každé dvě sousední vesnice jsou od sebe oddělené totemem postaveným dávnými předky.
+Totemy jsou unikátní a pan Holub má zájem je odkoupit. Je přesvědčen, že každý z nich prodá do soukromých sbírek za cenu <i>P</i>.
+Od domorodců se dozvídá, že totemy mezi dvojicemi sousedních vesnic stojí proto, aby zajišťovaly klid zbraní a dobré sousedské vztahy
+mezi obyvateli. Domorodci ale odkazy předků příliš nectí a jsou ochotni o prodeji totemů jednat. Pokud je počet bojovníků
+ve dvou sousedních vesnicích stejný, nabízejí dokonce zdarma totem, který vesnice odděluje,
+protože jsou přesvědčeni, že rovnováha sil dobré soudsedské vztahy zajišťuje. Je-li však v jedné vesnici počet bojovníků <i>B</i><sub>1</sub>
+a ve druhé <i>B</i><sub>2</sub>, kde <i>B</i><sub>1</sub> &ne; <i>B</i><sub>2</sub>, pak mají větší obavy a požadují za totem zaplatit
+částku <i>L</i> za každého bojovníka, o kterého je jedna z vesnic silnější než ta druhá, celkem tedy částku
+<i>L</i> &times; |<i>B</i><sub>1</sub> &minus; <i>B</i><sub>2</sub>|.
+Když pan Holub jeden z totemů získá, zmizí zároveň hranice mezi dvěma vesnicemi a z těchto dvou sousedních vesnic se tudíž stane jedna
+(domorodci mají silně zafixováno, že hranice vesnic vymezují právě totemy). Pan Holub může pokračovat v jednání o odkupu dalších
+totemů, musí však vzít v úvahu, že počet vesnic a počet bojovníků ve vesnicích se s každým uzavřeným obchodem změní. Otázkou je,
+kolik totemů a v jakém pořadí má postupně vykoupit, aby maximalizoval zisk.
+<br>
+<br>
+
+</p>
+
+<h3><font color="blue">Úloha</font></h3>
+<p align="justify">
+Jsou dány počty bojovníků v jednotlivých vesnicích podél řeky a také částky <i>P</i> a <i>L</i>. Určete, jakého maximálního zisku může
+pan Holub dosáhnout, pokud některé z totemů od domorodců vykoupí a poté je prodá do soukromých sbírek při ceně <i>P</i> za každý totem.
+Výkup totemů probíhá sekvenčně. Každý jednotlivý obchod se musí nejprve provést a daný totem se odebere,
+až poté je možné jednat s domorodci o odkupu dalšího totemu. Na jiný formát obchodu domorodci nepřistoupí.
+
+</p>
+
+<table border="0" width="810" align="center"><tbody><tr><td align="center">
+<img style="width: 460px;" src="example.png">
+<!--img style="width: 460px;" src="getdata.php?task=totems&item=example.png"-->
+<br>
+<b>Obrázek 1.</b> a) Příklad osmi vesnic (šedá kolečka) podél řeky a sedmi totemů vymezujících jejich hranice (hnědé čáry).
+Číslo uvnitř kolečka reprezentuje počet bojovníků v dané vesnici. Červená čísla jsou pořadová čísla vesnic.
+<br>
+b) Situace po vykoupení 3 totemů, kdy se počet vesnic zredukuje na 5. Předpokládejme, že <i>P</i> = <i>L</i> = 1. Vykoupíme nejprve například totem
+mezi vesnicemi s pořadovými čísly 1 a 2. Zaplatíme částku 1 &times; |2 &minus; 3| = 1 a vesnice 1 a 2 se sloučí do jedné, označené 1&amp;2.
+Tato vesnice má 2 + 3 = 5 bojovníků. Poté vykoupíme totem mezi vesnicemi 4 a 5 (zaplatíme 0) a mezi vesnicemi 6 a 7 (zaplatíme 1).
+Maximálního zisku dosáhneme, pokud budeme pokračovat a vykoupíme ještě 2 totemy, nyní mezi vesnicemi 1&amp;2 a 3, a mezi vesnicemi 6&amp;7 a 8. V obou
+případech nic neplatíme. Protože jsme domorodcům zaplatili celkem částku 2 a všech 5 totemů prodáme za částku 5, je celkový zisk 3. Vyššího
+zisku v daném případě dosáhnout nelze.
+     </td></tr>
+</tbody></table>
+
+<hr>
+
+
+<h3><font color="blue">Vstup</font></h3>
+<p align="justify">
+Vstup sestává ze dvou řádků.
+První řádek vstupu obsahuje tři celá kladná čísla <i>N</i>, <i>P</i>, <i>L</i> oddělená mezerami.
+Číslo <i>N</i> je počet domorodých vesnic, číslo <i>P</i> je částka, za kterou lze totem prodat, a <i>L</i> je částka, kterou domorodci při
+prodeji totemů požadují za každého rozdílového bojovníka.
+Druhý řádek vstupu obsahuje <i>N</i> celých kladných čísel oddělených mezerami.
+Tato čísla reprezentují počet bojovníků v jednotlivých vesnicích a jsou dána v pořadí, které odpovídá pořadí vesnic podél řeky.
+<br>
+<!--br-->
+Platí 1 &le; <i>N</i> &le; 800, 1 &le; <i>P</i>, <i>L</i> &le; 10.
+Počet bojovníků v každé z vesnic je maximálně 20 (platí pro počáteční stav, po sloučení několika vesnic může být tato mez překonána).
+</p>
+
+
+ <h3><font color="blue">Výstup</font></h3>
+<p align="justify">
+Výstup obsahuje jeden řádek s jedním celým číslem. Toto číslo je rovno maximálnímu zisku, kterého může pan Holub docílit nákupem a následným prodejem
+totemů.
+<br>
+Je zaručeno, že maximální zisk je pro každý vstup vždy kladné číslo.
+</p>
+
+
+<h3><font color="blue">Příklad 1</font></h3>
+
+<b>Vstup</b><br>
+<pre>
+8 1 1
+2 3 5 1 1 4 3 7
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+3
+</pre>
+
+Data a řešení Příkladu 1 jsou znázorněna na Obrázku 1.
+
+<h3><font color="blue">Příklad 2</font></h3>
+<b>Vstup</b><br>
+<pre>
+6 3 4
+1 1 3 2 2 1
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+6
+</pre>
+
+<h3><font color="blue">Příklad 3</font></h3>
+<b>Vstup</b><br>
+<pre>
+20 2 3
+5 3 4 8 3 6 6 8 8 6 3 5 1 4 6 3 1 2 3 4
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+7
+</pre>
+
+<hr>
+<h3><font color="blue">Veřejná data</font></h3>
+<p align="justify">
+Veřejná data k&nbsp;úloze jsou k&nbsp;dispozici. Veřejná data jsou uložena také v&nbsp;odevzdávacím systému a při
+každém odevzdání/spuštění úlohy dostává řešitel kompletní výstup na stdout a stderr ze svého programu
+pro každý soubor veřejných dat.
+<br>
+<a href="getdata.php?task=totems&amp;item=datapub.zip"><b>Veřejná data</b></a>
+</p>
+
+</div></body></html>

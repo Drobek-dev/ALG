@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0111)https://cw.felk.cvut.cz/brute/data/ae/release/2019z_b4b33alg/algzima2019/evaluation/input.php?task=occultations -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="cache-control" content="no-cache">
+  <link rel="stylesheet" type="text/css" href="./Zadání úlohy z A4B33ALG_files/default.css">
+  <title>Zadání úlohy z B4B33ALG</title>
+</head>
+<body>
+ <div class="main">
+
+
+<h2><font color="blue">Počítačová retro hra</font></h2>
+<p align="justify">
+
+Uvažujeme počítačovou hru, ve které hráč ovládá košík sestávající ze dvou modrých pixelů umístěných vedle sebe v horizontálním směru.
+Pomocí tohoto košíku chytá padající jednopixelová vejce. Pixely vajec mají oranžovou barvu. Ostatní pixely ve hře jsou pixely pozadí
+a mají barvu odlišnou od košíku i vajec.
+
+Čas ve hře je diskrétní. Za jednu časovou jednotku (tah) se vejce posunou o jeden pixel dolů. Během tahu může hráč přesunout košík o jeden pixel doprava
+nebo doleva, pouze však za předpokladu, že posunem žádný z pixelů košíku neopustí obdélníkovou herní plochu. Hráč může také ponechat pozici košíku beze změny. 
+
+Pokud se vejce dostane na spodní řádek a jeho pozice se kryje s pozicí jednoho z modrých pixelů košíku, tak je chyceno.
+V následném tahu vejce na spodním řádku ze hry mizí, ať už bylo chyceno či nikoliv.
+Za každé chycené vejce získává hráč jeden bod.
+<br>
+
+
+</p>
+
+<h3><font color="blue">Úloha</font></h3>
+<p align="justify">
+
+Je dána šířka herní plochy v pixelech a pro každé vejce, které se ve hře objeví, je známé číslo sloupce, ve kterém se pohybuje,
+a počet tahů, za které dopadne na spodní řádek.
+Za předpokladu, že na začátku je košík umístěn v levém dolním rohu herní plochy, určete, jaké maximální skóre může hráč získat.
+
+
+</p>
+
+&nbsp; 
+&nbsp; 
+&nbsp; <table border="0" width="700" align="center"><tbody><tr><td align="center">
+<img style="width: 200px;" src="example.png">
+<!--img style="width: 200px;" src="getdata.php?task=retrogame&item=example.png"-->
+<br>
+<b>Obrázek 1.</b> Na obrázku je reprezentace hry s hrací plochou o šířce 5 pixelů. Modrý košík je zobrazen ve výchozí pozici. Ve hře se objeví celkem 10 padajících vajec.
+Výška herní plochy není známa, každé vejce můžeme ale zobrazit ve čtvercové mřížce tím způsobem, že jej umístíme do sloupce, ve kterém padá, a dáme
+jej na řádek, jehož vzdálenost od spodního řádku je rovna počtu tahů, za které vejce na spodní řádek dopadne.
+Modré šipky ukazují směr pohybu košíku, oranžová šipka ukazuje směr pohybu vajec. Hráč může v daném případě získat maximálně 7 bodů. Tohoto skóre docílí chycením
+vajec se symbolem červené elipsy.
+     </td></tr>
+</tbody></table>
+
+<hr>
+
+
+<h3><font color="blue">Vstup</font></h3>
+<p align="justify">
+Na prvním řádku jsou kladná celá čísla <i>S</i> a <i>V</i> oddělená mezerou. Číslo <i>S</i> je šířka herní plochy v pixelech a číslo
+<i>V</i> je počet vajec, která se ve hře objeví.
+Následuje <i>V</i> řádků. Každý z těchto řádků reprezentuje jedno vejce pomocí dvojice čísel <i>C</i> a <i>T</i> oddělených mezerou,
+kde <i>C</i> je číslo sloupce, ve kterém se vejce pohybuje a <i>T</i> je číslo tahu, po jehož vykonání vejce dopadne na spodní řádek.
+Platí <i>T</i> &ge; 1, což znamená, že na začátku hry není žádné z vajec na spodním řádku. Také platí, že žádná dvě vejce nejsou na stejné pozici
+(dvojice čísel <i>C</i>, <i>T</i> je tedy pro každé z vajec jiná).
+Sloupce jsou číslované zleva doprava od 1 do <i>S</i>. Vejce jsou na vstupu reprezentovaná v náhodném pořadí.
+<br>
+Označme pomocí <i>T</i><sub>max</sub> číslo tahu, po jehož vykonání dopadne na spodní řádek poslední vejce.
+Platí 1 &le; <i>V</i> &le; 3.5 &times; 10<sup>5</sup>, 2 &le; <i>S</i> &le; 700, 1 &le; <i>T</i><sub>max</sub> &le; 2 &times; 10<sup>7</sup>.
+<br>
+<b>Upozornění:</b> Jak uvedené meze pro parametry naznačují, u větších vstupů platí, že počet vajec <i>V</i> je v povnání s hodnotou <i>S</i> &times; <i>T</i><sub>max</sub> o několik řádů menší.
+</p>
+
+
+ <h3><font color="blue">Výstup</font></h3>
+<p align="justify">
+Výstup obsahuje jeden řádek s jedním číslem, které odpovídá maximálnímu skóre, jehož může hráč ve hře dosáhnout.
+</p>
+
+
+<h3><font color="blue">Příklad 1</font></h3>
+
+<b>Vstup</b><br>
+<pre>
+5 10
+2 1
+1 4
+5 4
+4 5
+5 7
+4 7
+2 7
+2 9
+1 10
+5 10
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+7
+</pre>
+
+Data a řešení Příkladu 1 jsou znázorněna na Obrázku 1.
+
+<h3><font color="blue">Příklad 2</font></h3>
+<b>Vstup</b><br>
+<pre>
+4 10
+3 2
+2 10
+3 15
+2 7
+3 7
+4 3
+2 2
+4 15
+2 15
+4 2
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+8
+</pre>
+
+
+<hr>
+<h3><font color="blue">Veřejná data</font></h3>
+<p align="justify">
+Veřejná data k&nbsp;úloze jsou k&nbsp;dispozici. Veřejná data jsou uložena také v&nbsp;odevzdávacím systému a při
+každém odevzdání/spuštění úlohy dostává řešitel kompletní výstup na stdout a stderr ze svého programu
+pro každý soubor veřejných dat. 
+<br>
+<a href="getdata.php?task=retrogame&amp;item=datapub.zip"><b>Veřejná data</b></a>
+</p>
+
+</div></body></html>

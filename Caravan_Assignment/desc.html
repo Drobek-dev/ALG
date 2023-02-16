@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!-- saved from url=(0111)https://cw.felk.cvut.cz/brute/data/ae/release/2019z_b4b33alg/algzima2019/evaluation/input.php?task=occultations -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="cache-control" content="no-cache">
+  <link rel="stylesheet" type="text/css" href="./Zadání úlohy z A4B33ALG_files/default.css">
+  <title>Zadání úlohy z B4B33ALG</title>
+</head>
+<body>
+ <div class="main">
+
+
+<h2><font color="blue">Karavana v poušti</font></h2>
+<p align="justify">
+
+Karavana se pohybuje v poušti mezi vesnicemi, kde každá vesnice je <i>spřátelená</i> nebo <i>neutrální</i>. Přesun karavany začíná v jedné dané vesnici
+a dále probíhá po <i>trasách</i>.
+Trasa vždy spojuje dvě vesnice a karavana se po ní může pohybovat v obou směrech.
+Ve spřátelených vesnicích je o karavanu dobře postaráno co se týče proviantu. Když se karavana nachází ve spřátelené vesnici, je hodnota <i>nasycení</i> karavany
+vždy rovna danému celému kladnému číslu <i>D</i>. Pokud se karavana přesune po libovolné trase do neutrální vesnice, klesne hodnota nasycení o 1.
+Jinými slovy, hodnota nasycení karavany v neutrální vesnici <i>V</i> je vždy číslo o 1 menší, než byla hodnota nasycení v předchozí navštívené vesnici, ze které karavana do <i>V</i>
+po jedné trase docestovala.
+Výjimkou je pouze situace, kdy je hodnota nasycení v libovolné neutrální vesnici <i>V</i><sub>1</sub> rovna 0. V tomto případě karavana během pohybu po další trase
+z vesnice <i>V</i><sub>1</sub> do nějaké vesnice <i>V</i><sub>2</sub> musí
+nutně spotřebovat jeden balík přídavných zásob, bez ohledu na to, zda je <i>V</i><sub>2</sub> spřátelená nebo neutrální.
+Výsledkem takového přesunu se spotřebováním balíku zásob je to, že ve vesnici <i>V</i><sub>2</sub> je hodnota nasycení karavany rovna <i>D</i>
+(i v případě, že <i>V</i><sub>2</sub> je neutrální).
+<br>
+Pro dosažení cílové vesnice z výchozí vesnice se karavana může pohybovat libovolně po na sebe navazujících trasách.
+Znamená to, že lze například stejnou trasu projít opakovaně, pokud je to z nějakého důvodu výhodné. Pro balíky přídavných zásob předpokládáme,
+že nemohou být doplňovány ve vesnicích. Karavana musí být jimi vybavena od začátku své cesty.
+
+</p>
+
+<h3><font color="blue">Úloha</font></h3>
+<p align="justify">
+
+Je dán seznam spřátelených a neutrálních vesnic, seznam tras, číslo <i>D</i> a výchozí vesnice, která je spřátelená.
+Máme určit, kolik balíků přídavných zásob karavana minimálně potřebuje k tomu, aby byla schopná se přepravit
+do libovolné cílové vesnice. Zajímá nás také, kolik vesnic představuje pro karavanu cíl dostupný bez použití přídavných zásob. 
+
+
+</p>
+
+&nbsp; 
+&nbsp; 
+&nbsp; <table border="0" width="700" align="center"><tbody><tr><td align="center">
+<img style="width: 400px;" src="example.png">
+<!--img style="width: 400px;" src="getdata.php?task=caravan&item=example.png"-->
+<br>
+<b>Obrázek 1.</b> Na obrázku uzly reprezentují vesnice a hrany reprezentují trasy mezi vesnicemi. Výchozí vesnice má číslo 1. Všechny spřátelené vesnice
+jsou zvýrazněné zeleně. Předpokládáme, že <i>D</i> = 1. Potom platí, že bez použití přídavných zásob jsou z výchozí vesnice dosažitelné právě vesnice
+číslo 1, 2, 5 a 9. Dále, vesnice číslo 6, 7, 8, 10, 11 a 12 jsou dosažitelné z vesnice číslo 1 s použitím jednoho balíku zásob, a konečně vesnice číslo
+3 a 4 jsou dosažitelné se dvěma balíky zásob (ne však s jedním). Rozklad množiny vesnic na uvedené podmnožiny je znázorněn pomocí uzavřených červených křivek.
+     </td></tr>
+</tbody></table>
+
+<hr>
+
+
+<h3><font color="blue">Vstup</font></h3>
+<p align="justify">
+Na prvním řádku jsou čísla <i>N</i>, <i>M</i>, <i>S</i>, <i>D</i>, kde <i>N</i> je počet vesnic, <i>M</i> je počet tras mezi dvojicemi vesnic,
+<i>S</i> je počet spřátelených vesnic a <i>D</i> je hodnota nasycení karavany ve spřátelené vesnici.
+Vesnice jsou číslované od 1 do <i>N</i>. Výchozí vesnice má číslo 1. Spřátelené vesnice mají čísla 1 až <i>S</i>.
+Následuje <i>M</i> řádků, kde každý řádek reprezentuje jednu trasu pomocí dvojice čísel <i>V</i><sub>1</sub> a <i>V</i><sub>2</sub>.
+Tato čísla označují vesnice, které daná trasa spojuje.
+<br>
+Pro každou dvojici vesnic <i>V</i><sub>1</sub> a <i>V</i><sub>2</sub> je na vstupu maximálně jedna trasa. Trasy jsou na vstupu v náhodném pořadí.
+Předpokládáme, že všechny vesnice jsou z výchozí vesnice dostupné (s případným použitím přídavných zásob).
+<br>
+Platí 1 &le; <i>D</i> &le; 8, 1 &le; <i>S</i> &le; <i>N</i>, 1 &le; <i>N</i> &le; 4 &times; 10<sup>5</sup>, <i>M</i> < 4<i>N</i>.
+</p>
+
+
+ <h3><font color="blue">Výstup</font></h3>
+<p align="justify">
+Výstup obsahuje jeden řádek, na kterém jsou dvě čísla oddělená mezerou. První číslo je minimální počet balíků přídavných zásob, který postačuje k tomu,
+aby karavana docestovala z výchozí vesnice do libolně zvolené cílové vesnice. Druhé číslo je počet vesnic, které jsou pro karavanu dostupné z výchozí
+vesnice bez použití přídavných zásob. Mezi tyto vesnice počítáme i výchozí vesnici.
+</p>
+
+
+<h3><font color="blue">Příklad 1</font></h3>
+
+<b>Vstup</b><br>
+<pre>
+12 14 4 1
+1 5
+5 8
+8 12
+6 7
+9 10
+10 11
+11 4
+1 2
+2 9
+5 6
+6 10
+7 11
+12 3
+3 4
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+2 4
+</pre>
+
+Data a řešení Příkladu 1 jsou znázorněna na Obrázku 1.
+
+<h3><font color="blue">Příklad 2</font></h3>
+<b>Vstup</b><br>
+<pre>
+10 10 1 1
+2 3
+7 3
+10 2
+10 7
+4 6
+9 2
+5 9
+1 8
+8 5
+8 6
+</pre>
+
+<b>Výstup</b><br>
+<pre>
+3 2
+</pre>
+
+
+<hr>
+<h3><font color="blue">Veřejná data</font></h3>
+<p align="justify">
+Veřejná data k&nbsp;úloze jsou k&nbsp;dispozici. Veřejná data jsou uložena také v&nbsp;odevzdávacím systému a při
+každém odevzdání/spuštění úlohy dostává řešitel kompletní výstup na stdout a stderr ze svého programu
+pro každý soubor veřejných dat. 
+<br>
+<a href="https://cw.felk.cvut.cz/brute/data/ae/release/2020z_b4b33alg/alg2020/evaluation/getdata.php?task=caravan&amp;item=datapub.zip"><b>Veřejná data</b></a>
+</p>
+
+</div></body></html>
