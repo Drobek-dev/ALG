@@ -1,1 +1,1 @@
-# ALG
+Open solution in Visual Studio 2022+ at address: ALG\ALG_Beads\ALG_Solutions
